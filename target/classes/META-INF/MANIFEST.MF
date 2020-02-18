@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: servlet整合
+Implementation-Title: springBoot-servlet
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: wan
 Implementation-Vendor-Id: com.exp
