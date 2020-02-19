@@ -48,7 +48,7 @@
                     <repository>lgj/webdemo</repository>
                     <tag>1.0</tag>
                     <buildArgs>
-                        <JAR_FILE>/target/springBoot-servlet.jar.jar</JAR_FILE>
+                        <JAR_FILE>/target/springBoot-servlet.jar</JAR_FILE>
                     </buildArgs>
                 </configuration>
             </plugin>
