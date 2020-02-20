@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.servlet.common.RedisService;
 import com.servlet.service.UserService;
 
 @RestController
@@ -11,11 +12,15 @@ public class HelloController {
 	
 	 @Autowired
 	 private UserService userService;
+	 
+	 @Autowired
+	 private RedisService redisService ;
 
 	 
 	//测试
 	@GetMapping(path = "/hello")
     public String hello() {
+		redisService.set("1","value22222");
         return "Hello Jenkins";
     }
 	
