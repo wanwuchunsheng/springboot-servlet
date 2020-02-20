@@ -20,7 +20,7 @@ public class HelloController {
 	//测试
 	@GetMapping(path = "/hello")
     public String hello() {
-		redisService.set("1","value22222");
+		redisService.set("2","value22222");
         return "Hello Jenkins";
     }
 	
