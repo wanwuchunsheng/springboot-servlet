@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-servlet
+  namespace: default
+  labels:
+    app: springboot-servlet
+spec:
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8200
+    nodePort: 30090
+    targetPort: 8200
+  selector:
+    app: springboot-servlet
+---
+apiVersion: apps/v1
+#kind: ReplicationController #对象类型
+kind: Deployment
+metadata:
+  name: springboot-servlet-node1 #名称
+spec:
+  replicas: 1 #运行容器的副本数，修改这里可以快速修改分布式节点数量
+  selector:
+    matchLabels:
+      app: springboot-servlet
+  template:
+    metadata:
+      labels:
+        app: springboot-servlet
+    spec:
+      imagePullSecrets:
+      - name: registry-pull-sercet
+      containers:
+      - name: springboot-servlet
+        image: registry.cn-hangzhou.aliyuncs.com/smartwf/springboot-servlet:latest
+        imagePullPolicy: IfNotPresent #Always #pull镜像时机，
+        ports:
+        - containerPort: 8200 #容器对外开放端口
+          protocol: TCP
