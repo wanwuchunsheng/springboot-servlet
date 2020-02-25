@@ -21,7 +21,7 @@ public class HelloController {
 	@GetMapping(path = "/hello")
     public String hello() {
 		redisService.set("2","value22222");
-        return "Hello Jenkins";
+        return "Hello Jenkins  k8s 配置";
     }
 	
 	//情况表
