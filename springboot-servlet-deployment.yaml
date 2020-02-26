@@ -1,20 +1,3 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: springboot-servlet
-  namespace: default
-  labels:
-    app: springboot-servlet
-spec:
-  type: NodePort
-  ports:
-  - protocol: TCP
-    port: 8200
-    nodePort: 30090
-    targetPort: 8200
-  selector:
-    app: springboot-servlet
----
 apiVersion: apps/v1
 #kind: ReplicationController #对象类型
 kind: Deployment
