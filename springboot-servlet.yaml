@@ -34,7 +34,7 @@ spec:
       - name: registry-pull-sercet
       containers:
       - name: springboot-servlet
-        image: registry.cn-hangzhou.aliyuncs.com/smartwf/springboot-servlet:v1.7
+        image: registry.cn-hangzhou.aliyuncs.com/smartwf/springboot-servlet:latest
         imagePullPolicy: IfNotPresent #Always #pull镜像时机，
         ports:
         - containerPort: 8200 #容器对外开放端口
