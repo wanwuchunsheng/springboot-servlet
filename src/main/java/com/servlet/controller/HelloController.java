@@ -20,8 +20,8 @@ public class HelloController {
 	//测试
 	@GetMapping(path = "/hello")
     public String hello() {
-		redisService.set("2","value22222");
-        return "Hello Jenkins  k8s 配置";
+		redisService.set(Math.random()*2*100+"","测试");
+        return "Hello Jenkins  k8s 配置1111";
     }
 	
 	//情况表
