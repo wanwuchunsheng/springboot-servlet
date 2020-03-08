@@ -1,5 +1,7 @@
 package com.servlet.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +11,8 @@ import com.servlet.service.UserService;
 
 @RestController
 public class HelloController {
+	
+	private static final Logger log = LoggerFactory.getLogger(HelloController.class);
 	
 	 @Autowired
 	 private UserService userService;
@@ -41,6 +45,9 @@ public class HelloController {
 	@GetMapping(path = "/add")
     public String add() {
 		System.out.println("插入5个用户");
+		log.info("插入5个用户");
+		log.debug("插入5个用户debug");
+		log.error("插入5个用户error");
         userService.create("a", 1);
         userService.create("b", 2);
         userService.create("c", 3);
