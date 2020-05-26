@@ -1,4 +1,5 @@
 # 默认启用开发环境
+# 指定执行环境
 spring:
   profiles:
     active: prod
