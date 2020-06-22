@@ -25,7 +25,7 @@ public class HelloController {
 	@GetMapping(path = "/hello")
     public String hello() {
 		redisService.set(Math.random()*2*100+"","测试");
-        return "Hello Jenkins  k8s 配置1111111111111";
+        return "Hello Jenkins  k8s 配置33333333333333";
     }
 	
 	//情况表
