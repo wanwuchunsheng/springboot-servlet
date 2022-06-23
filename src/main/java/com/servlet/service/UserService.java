@@ -1,10 +1,12 @@
 package com.servlet.service;
 
+import java.util.List;
+
+import com.servlet.pojo.User;
+
 public interface UserService {
 	
-	 void create(String name, Integer age);
-    void deleteByName(String name);
-    Integer getAllUsers();
-    void deleteAllUsers();
+	
+	List<User> queryUserInfo(User userInfo);
 
 }

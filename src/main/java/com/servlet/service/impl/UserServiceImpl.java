@@ -1,9 +1,14 @@
 package com.servlet.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.servlet.dao.UserDao;
+import com.servlet.pojo.User;
 import com.servlet.service.UserService;
 
 
@@ -11,26 +16,18 @@ import com.servlet.service.UserService;
 public class UserServiceImpl implements UserService{
 	
 	@Autowired
-    private JdbcTemplate jdbcTemplate;
+    private UserDao userDao;
 
-    @Override
-    public void create(String name, Integer age) {
-        jdbcTemplate.update("insert into USER(NAME, AGE ) values(?, ?)", name, age);
-    }
-
-    @Override
-    public void deleteByName(String name) {
-        jdbcTemplate.update("delete from USER where NAME = ?", name);
-    }
-
-    @Override
-    public Integer getAllUsers() {
-        return jdbcTemplate.queryForObject("select count(1) from USER", Integer.class);
-    }
-
-    @Override
-    public void deleteAllUsers() {
-        jdbcTemplate.update("truncate table user");
-    }
-
+	@Override
+	public List<User> queryUserInfo(User userInfo) {
+		QueryWrapper<User> queryWp = new QueryWrapper<>();
+		if(userInfo.getId()  != null) {
+			queryWp.eq("id", userInfo.getId());
+		}
+		List<User> user =userDao.selectList(queryWp);
+		return user;
+	}
+	
+	
+	
 }
