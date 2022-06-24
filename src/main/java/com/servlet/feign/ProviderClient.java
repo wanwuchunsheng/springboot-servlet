@@ -16,7 +16,7 @@ public interface ProviderClient {
 
 }
 */
-@FeignClient(name = "smartwf-system-man",path="smartwf-system-man.windmagics", url = "/smartwf_sys_backend",fallback = ProviderClientFallback.class)
+@FeignClient(name = "smartwf-system-man", url = "smartwf-system-man.windmagics",path="/smartwf_sys_backend",fallback = ProviderClientFallback.class)
 public interface ProviderClient {
 	
 	@GetMapping(value="/user/selectUserInfoById",headers = {"Accept=application/json"})
