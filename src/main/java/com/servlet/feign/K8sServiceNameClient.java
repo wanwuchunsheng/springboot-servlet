@@ -4,10 +4,12 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "smartwf-system-man", url = "smartwf-system-man",path="/smartwf_sys_backend",fallback = K8sServiceNameClient.class)
+import com.servlet.feign.impl.K8sServiceNameClientBack;
+
+@FeignClient(name = "smartwf-health-man", url = "smartwf-health-man",path="/smartwf_health",fallback = K8sServiceNameClientBack.class)
 public interface K8sServiceNameClient {
 	
-	@GetMapping(value="/user/selectUserInfoById",headers = {"Accept=application/json"})
+	@GetMapping(value="/log/selectLogById",headers = {"Accept=application/json"})
 	String querySysUserInfo2(@RequestParam("id") Integer id);
 	
 
