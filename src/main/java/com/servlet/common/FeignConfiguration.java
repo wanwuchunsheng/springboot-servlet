@@ -15,15 +15,15 @@ import feign.RequestTemplate;
  * 拦截器，拦截所有请求头部参数
  * 
  * 
- * */
-
+ * 
+*/
 @Configuration
 public class FeignConfiguration implements RequestInterceptor {
 
 	@Override
     public void apply(RequestTemplate template) {
-        ServletRequestAttributes attributes = (ServletRequestAttributes)
-                RequestContextHolder.getRequestAttributes();
+		//将RequestAttributes对象设置为子线程共享
+		ServletRequestAttributes attributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         Enumeration<String> headerNames = request.getHeaderNames();
         if (headerNames != null) {

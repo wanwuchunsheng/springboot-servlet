@@ -35,15 +35,34 @@ spring:
      filters: stat,wall,log4j
      logSlowSql: true
         
-# 打开feign 的服务降级
 feign:
-  circuitbreaker:
-    enabled: true # 开启服务降级  
-  client:
-      config:
-        default:
-          connectTimeout: 25000        #默认连接超时时间
-          readTimeout: 25000           #默认读取超时时间
-          loggerLevel: basic          #默认日志级别  
+  # 开启压缩
+  compression:
+    request:
+      enabled: true
+      # 配置压缩支持的MIME TYPE
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048  # 配置压缩数据大小的下限
+    response:
+      enabled: true
+  okhttp:
+    enabled: true
+  hystrix:
+    enabled: true
+ 
+# 更换hystrix策略，解决无法传递threadLocal变量问题
+hystrix:
+  shareSecurityContext: true
+  command:
+    default:
+      circuitBreaker:
+        sleepWindowinMilliseconds: 10000
+        forceClosed: true
+      execution:
+        isolation:
+          #strategy: SEMAPHORE
+          thread:
+            timeoutinMilliseconds: 10000
+          
           
           
